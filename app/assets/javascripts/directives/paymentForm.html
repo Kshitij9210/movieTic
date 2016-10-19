@@ -1,0 +1,78 @@
+<md-dialog class="fullscreen-dialog" aria-label="Purchase Tickets">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Purchase Tickets</h2>
+      <span flex></span>
+      <md-button class="md-icon-button" ng-click="closeDialog()">
+        <md-icon md-font-library="material-icons" aria-label="Close dialog">close</md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+
+  <md-dialog-content>
+    <div class="md-dialog-content">
+      <div layout="column" layout-padding>
+        <form name="paymentForm">
+          <div layout-gt-sm="row">
+            <md-input-container class="md-block" flex>
+              <label>Name</label>
+              <input ng-model="user.name" type="text" ng-required="true">
+              <md-icon md-font-library="material-icons">person</md-icon>
+            </md-input-container>
+
+            <div flex="5" hide-xs hide-sm></div>
+
+            <md-input-container class="md-block" flex>
+              <label>Phone Number</label>
+              <input ng-model="user.mobile" type="text">
+              <md-icon md-font-library="material-icons">contact_phone</md-icon>
+            </md-input-container>
+          </div>
+
+          <div layout-gt-sm="row">
+            <md-input-container class="md-block" flex>
+              <label>Email</label>
+              <input ng-model="user.email" type="email" ng-required="true">
+              <md-icon md-font-library="material-icons">contact_mail</md-icon>
+            </md-input-container>
+
+            <div flex="5" hide-xs hide-sm></div>
+
+            <md-input-container class="md-block" flex>
+              <label>Address</label>
+              <input ng-model="user.address" type="text">
+              <md-icon md-font-library="material-icons">location_on</md-icon>
+            </md-input-container>
+          </div>
+
+          <div layout-gt-sm="row">
+            <md-input-container class="md-block" flex>
+              <label>Credit Card</label>
+              <input ng-model="user.creditCard" type="text" payments-validate="card" payments-type-model="type" payments-format="card" ng-required="true">
+              <md-icon md-font-library="material-icons">credit_card</md-icon>
+            </md-input-container>
+
+            <div flex="5" hide-xs hide-sm></div>
+
+            <md-input-container class="md-block" flex>
+              <label>CVC</label>
+              <input ng-model="user.cvc" type="text" payments-validate="cvc" payments-type-model="type" payments-format="cvc" ng-required="true">
+            </md-input-container>
+          </div>
+
+          <div layout-gt-sm="row">
+            <md-input-container class="md-block" flex="50">
+              <label>Expiry mm/yy[yy]</label>
+              <input ng-model="user.expiry" type="text" payments-validate="expiry" payments-format="expiry" ng-required="true">
+              <md-icon md-font-library="material-icons">date_range</md-icon>
+            </md-input-container>
+          </div>
+
+          <div layout-gt-sm="row">
+            <md-button class="md-raised md-primary payment-button" ng-disabled="disableSubmit || paymentForm.$invalid" ng-click="pay()">Pay ${{ movie.amount }}</md-button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </md-dialog-content>
+</md-dialog>

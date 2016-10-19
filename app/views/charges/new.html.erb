@@ -1,0 +1,30 @@
+<md-toolbar>
+  <div class="md-toolbar-tools">
+    <h3>MovieTic</h3>
+    <span flex></span>
+    <md-button ng-click="openMovieDialog($event)" class="md-raised">
+      Add Movie
+    </md-button>
+    <md-button ng-click="openPurchaseHistoryDialog($event)" class="md-raised">
+      Purchases History
+    </md-button>
+  </div>
+</md-toolbar>
+
+<div class="md-padding" layout="row" layout-xs="column" layout-wrap layout-margin layout-align="left">
+  <div ng-repeat="m in movies" flex-xs flex-gt-sm="20" flex-sm="25" layout="column" class="card-margin">
+    <md-card>
+      <md-card-title>
+        <md-card-title-text>
+          <span class="md-headline">{{ m.title }}</span>
+        </md-card-title-text>
+      </md-card-title>
+      <md-card-content>
+        <p>{{ m.description }}</p>
+      </md-card-content>
+      <md-card-actions layout="row" layout-align="end center">
+        <md-button class="book-button" ng-click="openPurchaseDialog($event, m)">Book Now</md-button>
+      </md-card-actions>
+    </md-card>
+  </div>
+</div>

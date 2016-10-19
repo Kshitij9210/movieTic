@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html ng-app="stripe">
+  <head>
+    <title>Tickets | MovieTic</title>
+
+    <meta id="viewport" name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+
+    <%= stylesheet_link_tag 'application' %>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  </head>
+
+  <body ng-controller="stripeController">
+    <%= yield %>
+
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+    <%= javascript_include_tag 'application' %>
+  </body>
+</html>
