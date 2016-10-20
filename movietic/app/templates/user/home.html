@@ -1,0 +1,179 @@
+{% extends "user/base.html" %}
+{% load static %}
+{% block content %}
+  {% if user.is_authenticated %}
+  <md-content flex="100" layout="row" layout-align="center start" ng-controller="homeCtrl" ng-init="init()">
+    <div flex-gt-xs="50" flex-xs="100">
+      <md-toolbar  class=" md-accent">
+        <div class="md-toolbar-tools">
+          <h2>
+            <span>Hello {{ user.username }}!</span>
+          </h2>
+          <span flex></span>
+          <a class="md-primary" href="/logout/">Logout</a>
+        </div>
+      </md-toolbar>
+      <md-tabs md-dynamic-height md-border-bottom>
+        <md-tab label="Product">
+          <md-content ng-hide="showcheckout" class="md-padding" layout="row" layout-wrap layout-align="start center">
+            <md-card flex-xs="100" flex-gt-xs="45">
+              <img ng-src="{% static "img/movies.jpg" %}" class="md-card-image" alt="Movies">
+              <md-card-title>
+                <md-card-title-text>
+                  <span class="md-headline">Product 1</span>
+                </md-card-title-text>
+              </md-card-title>
+              <md-card-actions layout="row" layout-align="end center">
+                <md-card-icon-actions>
+                  <span>$9.99</span>
+                </md-card-icon-actions>
+                <md-button class="md-primary" ng-click="setAmount(1999)">
+                  Select
+                </md-button>
+              </md-card-actions>
+            </md-card>
+            <md-card flex-xs="100" flex-gt-xs="45">
+              <img ng-src="{% static "img/movies.jpg" %}" class="md-card-image" alt="Movies">
+              <md-card-title>
+                <md-card-title-text>
+                  <span class="md-headline">Product 2</span>
+                </md-card-title-text>
+              </md-card-title>
+              <md-card-actions layout="row" layout-align="end center">
+                <md-card-icon-actions>
+                  <span>$19.99</span>
+                </md-card-icon-actions>
+                <md-button class="md-primary" ng-click="setAmount(1999)" >
+                  Select
+                </md-button>
+              </md-card-actions>
+            </md-card>
+          </md-content>
+          <md-content ng-if="showcheckout" class="md-padding">
+            <md-toolbar >
+              <div class="md-toolbar-tools">
+                <md-button ng-click="backtoselect()">Back</md-button>
+                <h2>
+                  <span>Amount: ${[checkoutamount/100]}</span>
+                </h2>
+                <span flex></span>
+                <a class="md-primary" href="/logout/">Logout</a>
+              </div>
+            </md-toolbar>
+            <form action="/paydone/" method="POST" id="custCheckout" layout="column">
+              {% csrf_token %}
+              <md-input-container>
+                <label>First Name</label>
+                <input ng-model="user.first_name" name="first_name" ng-init="user.first_name='{{user.first_name}}'" >
+              </md-input-container>
+                <md-input-container>
+                <label>Last Name</label>
+                <input ng-model="user.last_name" name="last_name" ng-init="user.last_name='{{user.last_name}}'"  >
+              </md-input-container>
+              <md-input-container>
+                <label>Email</label>
+                <input ng-model="user.email" name="email" ng-init="user.email='{{user.email}}'" >
+              </md-input-container>
+              <md-input-container>
+                <label>Address</label>
+                <input ng-model="user.address" name="address" ng-init="user.address='{{userprofile.address}}'">
+              </md-input-container>
+              <md-input-container>
+                <label>Phone</label>
+                <input ng-model="user.phone" name="phone" ng-init="user.phone='{{userprofile.phone}}'" >
+              </md-input-container>
+              <input type="hidden" id="stripeToken" name="stripeToken" >
+              <input type="hidden" id="stripeAmount" name="stripeAmount" >
+              <md-button class="md-raised md-warn" ng-click="openCheckout()">Continue to payment</md-button>
+            </form>
+            <!--<form action="/paydone/" method="POST">
+              {% csrf_token %}
+              <script
+                src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                data-key="pk_test_IMy5aA4PoPc4kobJyjQG0yMs"
+                data-amount="999"
+                data-name="MovieTic"
+                data-description="Widget"
+                data-zip-code="true"
+                data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                data-locale="auto">
+              </script>
+            </form>
+            <form action="/paydone/" method="POST" id="payment-form">
+              {% csrf_token %}
+              <span class="payment-errors"></span>
+
+              <div class="form-row">
+                <label>
+                  <span>Card Number</span>
+                  <input type="text" size="20" data-stripe="number">
+                </label>
+              </div>
+
+              <div class="form-row">
+                <label>
+                  <span>Expiration (MM/YY)</span>
+                  <input type="text" size="2" data-stripe="exp_month">
+                </label>
+                <span> / </span>
+                <input type="text" size="2" data-stripe="exp_year">
+              </div>
+
+              <div class="form-row">
+                <label>
+                  <span>CVC</span>
+                  <input type="text" size="4" data-stripe="cvc">
+                </label>
+              </div>
+
+
+              <input type="submit" class="submit" value="Submit Payment">
+            </form>-->
+          </md-content>
+        </md-tab>
+        <md-tab label="Transaction">
+          <md-content class="md-padding">
+            <md-list flex>
+             <md-subheader class="md-no-sticky">Previous Transactions</md-subheader>
+            {% for i in transaction %}
+             <md-list-item class="md-3-line" ng-click="null">
+               <img  ng-src="{% static "img/movies.jpg" %}" class="md-avatar" alt="Movies" />
+               <div class="md-list-item-text" layout="column">
+                 <h3>$ {{ i.amount }}</h3>
+                 <h4>Movies</h4>
+                 <p>Transaction ID : {{ i.trans_Id }}</p>
+               </div>
+             </md-list-item>
+            {% endfor %}
+           </md-list>
+          </md-content>
+        </md-tab>
+        <md-tab label="Charts">
+          <md-content class="md-padding">
+            <movie-chart chart-data="myData"  ></movie-chart>
+          </md-content>
+        </md-tab>
+      </md-tabs>
+    </div>
+  </md-content>
+  {% else %}
+  <md-content layout="row" layout-align="center start">
+    <div flex-gt-xs="50" flex-xs="100" layout="row" layout-wrap  >
+      <md-toolbar  class=" md-accent">
+        <div class="md-toolbar-tools">
+          <h2>
+            <span>Welcome!</span>
+          </h2>
+          <span flex></span>
+        </div>
+      </md-toolbar>
+      <div flex="100" layout="row" layout-wrap layout-align="center center">
+
+        <img ng-src="{% static "img/movies.jpg" %}" class="md-card-image" flex="80" alt="Movies">
+        <md-button flex="50" class="md-raised md-primary" href="/login/">Login</md-button>
+        <md-button flex="50" class="md-raised md-warn" href="/register/">Register</md-button>
+      </div>
+    </div>
+  </md-content>
+  {% endif %}
+{% endblock content %}

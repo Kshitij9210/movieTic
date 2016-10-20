@@ -1,0 +1,26 @@
+{% extends "user/base.html" %}
+
+{% block content %}
+  <div flex='100' layout="column" layout-align="center center">
+    <div flex-xs="100" flex-gt-xs="50" layout="column" layout-align="center center">
+      <md-toolbar  class=" md-accent">
+        <h2 class="md-toolbar-tools">
+          <span>Login to movietic</span>
+        </h2>
+      </md-toolbar>
+      <form id="login_form" method="post" layout="column" action="/login/">
+          {% csrf_token %}
+          <md-input-container>
+            <label>Username</label>
+            <input type="text" name="username" value="" size="50">
+          </md-input-container>
+          <md-input-container>
+            <label>Password</label>
+            <input type="password" name="password" value="" size="50">
+          </md-input-container>
+          <span>{{ msg }}</span></br/>
+          <md-button type="submit" class="md-raised">Login</md-button>
+      </form>
+    </div>
+  </div>
+{% endblock content %}

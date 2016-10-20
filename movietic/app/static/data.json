@@ -1,0 +1,38 @@
+[
+  {
+    "Theater X":5,
+    "Theater Y":1,
+    "Theater Z":2,
+    "date":"10-08-2016"
+  },
+  {
+    "Theater X":40,
+    "Theater Y":9,
+    "Theater Z":20,
+    "date":"11-08-2016"
+  },
+  {
+    "Theater X":35,
+    "Theater Y":25,
+    "Theater Z":4,
+    "date":"12-08-2016"
+  },
+  {
+    "Theater X":30,
+    "Theater Y":25,
+    "Theater Z":10,
+    "date":"13-08-2016"
+  },
+  {
+    "Theater X":25,
+    "Theater Y":22,
+    "Theater Z":10,
+    "date":"14-08-2016"
+  },
+  {
+    "Theater X":4,
+    "Theater Y":1,
+    "Theater Z":0,
+    "date":"15-08-2016"
+  }
+]

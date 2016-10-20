@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=9" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MovieTic</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.css">
+  <link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css">
+  <!-- Angular Material requires Angular.js Libraries -->
+  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
+
+   <!-- Angular Material Library -->
+ <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.js"></script>
+ <script src="https://checkout.stripe.com/checkout.js"></script>
+ <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+ <script src="{% static "js/jquery.min.js" %}"></script>
+ <script type="text/javascript">
+    Stripe.setPublishableKey('pk_test_IMy5aA4PoPc4kobJyjQG0yMs');
+ </script>
+ <script>
+    var STATIC_URL = "{% static '/' %}";
+</script>
+
+ <script type="text/javascript">
+     $(function() {
+       var $form = $('#payment-form');
+       $form.submit(function(event) {
+         // Disable the submit button to prevent repeated clicks:
+         $form.find('.submit').prop('disabled', true);
+
+         // Request a token from Stripe:
+         Stripe.card.createToken($form, stripeResponseHandler);
+
+         // Prevent the form from being submitted:
+         return false;
+       });
+      });
+      function stripeResponseHandler(status, response) {
+        // Grab the form:
+        var $form = $('#payment-form');
+
+        if (response.error) { // Problem!
+
+          // Show the errors on the form:
+          $form.find('.payment-errors').text(response.error.message);
+          $form.find('.submit').prop('disabled', false); // Re-enable submission
+
+        } else { // Token was created!
+
+          // Get the token ID:
+          var token = response.id;
+
+          // Insert the token ID into the form so it gets submitted to the server:
+          $form.append($('<input type="hidden" name="stripeToken">').val(token));
+
+          // Submit the form:
+          $form.get(0).submit();
+        }
+      };
+   </script>
+
+   <link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}">
+   <script src="{% static "js/app.js" %}"></script>
+</head>
+<body ng-app="movietic">
+
+  {% block content %} {% endblock %}
+</body>
+</html>

@@ -1,0 +1,18 @@
+{% extends "user/base.html" %}
+{% block content %}
+<div flex='100' layout="row" layout-align="center center">
+  <div flex-xs="100" flex-gt-xs="50" layout="column" layout-align="center center">
+    <md-toolbar  class=" md-accent">
+      <h2 class="md-toolbar-tools">
+        <span>Payment</span>
+      </h2>
+    </md-toolbar>
+    {% if status %}
+      <h1 class="md-primary">Payment successful</h1>
+    {% else %}
+      <h1 class="md-warn">Payment Decline</h1>
+    {% endif %}
+    <md-button class="md-raised md-warn" href="/">Back</md-button><br />
+  </div>
+</div>
+{% endblock content %}

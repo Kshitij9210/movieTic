@@ -1,0 +1,44 @@
+{% extends "user/base.html" %}
+
+{% block content %}
+<div flex='100' layout="row" layout-align="center center">
+  <div flex-xs="100" flex-gt-xs="50" layout="row" layout-wrap layout-align="center center">
+    <md-toolbar  class=" md-accent">
+      <h2 class="md-toolbar-tools">
+        <span>Register to movietic</span>
+      </h2>
+    </md-toolbar>
+    {% if registered %}
+    <strong>thank you for registering!</strong>
+    <a href="/">Return to the homepage.</a><br />
+    {% else %}
+    <strong flex="100">register here!</strong><br />
+
+    <form  flex="100" id="user_form" method="post" layout="column" action="/register/"
+            enctype="multipart/form-data">
+
+        {% csrf_token %}
+       <md-input-container>
+         <label>Username</label>
+         <input type="text" name="username" value="">
+       </md-input-container>
+      <md-input-container>
+        <label>Email</label>
+        <input type="email" name="email" value="" >
+      </md-input-container>
+       <md-input-container>
+         <label>Password</label>
+         <input type="password" name="password" value="" >
+       </md-input-container>
+        <md-input-container>
+          <label>Phone</label>
+          <input type="text" name="phone" value="" >
+        </md-input-container>
+
+        <!-- Provide a button to click to submit the form. -->
+        <md-button type="submit" class="md-raised">Register</md-button>
+    </form>
+    {% endif %}
+  </div>
+</div>
+{% endblock content %}
