@@ -42,9 +42,9 @@ public class MakePayment extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String __token = request.getParameter("stripeToken");
-		System.out.println("Card has been validated and the Token is "+__token);
 		
-		Stripe.apiKey = "pk_test_KxVWAym8ryv6WP5SpKjZ85X8";
+		
+		Stripe.apiKey = "Dev_API_KEY";
 		String token = request.getParameter("stripeToken");
 		
 		try{
