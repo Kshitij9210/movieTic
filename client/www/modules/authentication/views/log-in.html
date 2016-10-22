@@ -1,0 +1,30 @@
+<ion-view hide-nav-bar="true">
+  <ion-content id="login">
+
+
+    <form ng-submit="vm.login()" class="aligner-item">
+
+      <div class="list">
+        <label class="item item-input login-input">
+              <span class="input-label">Email</span>
+              <input type="text" ng-model="user.email">
+            </label>
+        <label class="item item-input login-input">
+              <span class="input-label">Password</span>
+              <input type="password" ng-model="user.password">
+            </label>
+      </div>
+      <div class="padding">
+        <button class="button button-block button-positive" ng-click="vm.login(user)">
+              login
+            </button>
+        <p class="text-center">
+          <a class="button button-clear button-positive" href="#/sign-up">sign up</a>
+        </p>
+      </div>
+
+    </form>
+
+
+  </ion-content>
+</ion-view>

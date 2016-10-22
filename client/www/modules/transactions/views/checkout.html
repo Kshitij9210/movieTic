@@ -1,0 +1,33 @@
+<ion-view view-title="Checkout">
+  <ion-content class="padding" id="checkout">
+    <form ng-submit="vm.purchase()" id="payment-form">
+      <div class="list">
+        <label class="item item-input item-stacked-label">
+        <span class="input-label">Card Number</span>
+        <input type="number" placeholder="">
+      </label>
+        <label class="item item-input item-stacked-label">
+        <span class="input-label">Card Type</span>
+        <input type="text" placeholder="e.g. VISA">
+      </label>
+        <div class="row no-pad">
+
+          <label class="col col-50 item item-input item-stacked-label">
+        <span class="input-label">Expiry (mm)</span>
+        <input type="text" placeholder="">
+      </label>
+          <label class="col col-50 item item-input item-stacked-label">
+      <span class="input-label">Expiry (yy)</span>
+      <input type="text" placeholder="">
+      </label>
+        </div>
+
+        <label class="item item-input item-stacked-label">
+      <span class="input-label">CVV</span>
+      <input type="number" placeholder="e.g. 233">
+    </label>
+      </div>
+      <button class="button button-balanced button-block" type="submit">Sumit</button>
+    </form>
+  </ion-content>
+</ion-view>

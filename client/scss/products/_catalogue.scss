@@ -1,0 +1,33 @@
+#catalogue {
+  background-color: $background-color;
+  background-color: $background-color;
+
+  .cat-container {
+    padding: 0 6%;
+
+    .prod-card {
+      margin-bottom: 16px;
+
+      ._pc-header {
+        ._prod-name {
+          color: #444444;
+          float: left;
+          font-size: 1.5em;
+          padding: 5px 5px 5px 20px;
+        }
+
+        ._prod-price {
+          color: #444444;
+          float: right;
+          font-size: 1.5em;
+          font-weight: 500;
+          padding: 5px 20px 5px 5px;
+        }
+      }
+
+      ._prod-img {
+        font-size: 10em;
+      }
+    }
+  }
+}

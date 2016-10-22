@@ -1,0 +1,43 @@
+<ion-view hide-nav-bar="true">
+  <ion-content padding="true" id="signup">
+    <form class="padding signup-form">
+      <div class="list">
+        <label class="item item-input item-floating-label signup-input">
+      <span class="input-label">Username</span>
+      <input type="text" placeholder="username" required>
+    </label>
+        <label class="item item-input item-floating-label signup-input">
+      <span class="input-label">Password</span>
+      <input type="password" placeholder="password" required>
+    </label>
+        <label class="item item-input item-floating-label signup-input">
+      <span class="input-label">Email</span>
+      <input type="email" placeholder="Email">
+    </label>
+        <label class="item item-input item-floating-label signup-input">
+    <span class="input-label">Address</span>
+    <input type="text" placeholder="address">
+  </label>
+        <label class="item item-input item-floating-label signup-input">
+  <span class="input-label">Phone No.</span>
+    <input type="number" placeholder="phone no.">
+  </label>
+      </div>
+      <div class="row">
+        <span class="col col-30"></span>
+        <button class="col col-40 button button-outline button-positive signup-btn" ng-click="vm.showAlert()">
+            create account
+          </button>
+        <span class="col col-30"></span>
+      </div>
+
+      <div class="row">
+        <span class="col col-30"></span>
+        <p class="text-center">
+          <a class="button button-clear button-positive" href="#/login">login</a>
+        </p>
+        <span class="col col-30"></span>
+      </div>
+    </form>
+  </ion-content>
+</ion-view>

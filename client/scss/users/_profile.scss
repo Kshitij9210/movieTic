@@ -1,0 +1,25 @@
+#profile {
+  background-color: $background-color;
+
+  .profile-pic {
+    font-size: 10em;
+  }
+
+  .profile-info {
+    border-radius: 6px;
+
+    .item {
+      padding: 6px;
+
+      &:first-child {
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+      }
+
+      &:last-child {
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+      }
+    }
+  }
+}
