@@ -1,0 +1,29 @@
+@CHARSET "ISO-8859-1";
+*{
+	font-family:'Open Sans';
+}
+input{
+	padding:5px;
+	border:none;
+	border-radius:3px;
+	border:1px solid #d6d6d6;
+}
+#payment-form{
+	border:1px solid #d6d6d6;
+	width:321px;
+	margin:auto;
+	padding:30px;
+	border-radius:3px;
+}
+#form-header{
+	text-align: center;
+	padding:10px;
+	background-color: #dddddd;
+	border-radois:3px;
+}
+.extrasmall-fonts{
+	font-size: 12px;
+} 
+.errs{
+	color: red;
+}
