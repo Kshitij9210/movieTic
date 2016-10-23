@@ -13,23 +13,14 @@
     .controller('ProfileCtrl', ProfileCtrl);
 
 
-  function ProfileCtrl($state, $ionicLoading) {
+  function ProfileCtrl(Profile, $state, $ionicLoading) {
     var vm = this;
 
-    vm.show = function() {
-      $ionicLoading.show({
-        template: '<ion-spinner icon="ios"></ion-spinner>'
-      }).then(function() {
-        console.log("The loading indicator is now displayed");
-
-      });
-    };
-
-    vm.hide = function() {
-      $ionicLoading.hide().then(function() {
-        console.log("The loading indicator is now hidden");
-      });
-    };
+    //get products
+    Profile.info().then(function(res) {
+      vm.info = res.data;
+      console.log(vm.info);
+    });
 
     vm.logout = function(user) {
       console.log('Log-out', user);

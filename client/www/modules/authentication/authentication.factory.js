@@ -13,29 +13,19 @@
     .factory('Authentication', Authentication)
 
 
-  function Authentication(Restangular) {
-    var ApiEndPoints = {
-      LOGIN: '/user/',
-      LOGOUT: '/user/'
-    };
-
+  function Authentication($http) {
     return {
-      login: login;
-      logout: logout;
-    }
-
-    function login(data) {
-      return Restangular.oneUrl(ApiEndPoints.LOGIN).customPOST(
-        $.param(data),
-        undefined,
-        undefined, {
-          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-        }
-      );
+      signup: signup
     };
 
-    function getLogout() {
-      return Restangular.all(ApiEndPoints.LOGOUT).post({});
+    function signup(uname, pass, email, address, phone) {
+      return $http.post('http://localhost:8000/api/users/', {
+        "name": uname,
+        "password": pass,
+        "address": address,
+        "email": email,
+        "phone": phone
+      })
     }
 
 

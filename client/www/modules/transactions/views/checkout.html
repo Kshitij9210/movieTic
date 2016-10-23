@@ -1,32 +1,27 @@
 <ion-view view-title="Checkout">
   <ion-content class="padding" id="checkout">
-    <form ng-submit="vm.purchase()" id="payment-form">
+    <form ng-submit="vm.processCard()" id="payment-form">
       <div class="list">
         <label class="item item-input item-stacked-label">
         <span class="input-label">Card Number</span>
-        <input type="number" placeholder="">
-      </label>
-        <label class="item item-input item-stacked-label">
-        <span class="input-label">Card Type</span>
-        <input type="text" placeholder="e.g. VISA">
+        <input type="number" placeholder="e.g. 4242 4242 4242 4242"  ng-model="vm.cnum" required>
       </label>
         <div class="row no-pad">
-
           <label class="col col-50 item item-input item-stacked-label">
         <span class="input-label">Expiry (mm)</span>
-        <input type="text" placeholder="">
+        <input type="number" placeholder="e.g. 12"  ng-model="vm.expM" required>
       </label>
           <label class="col col-50 item item-input item-stacked-label">
       <span class="input-label">Expiry (yy)</span>
-      <input type="text" placeholder="">
+      <input type="number" placeholder="e.g 17"  ng-model="vm.expY" required>
       </label>
         </div>
-
         <label class="item item-input item-stacked-label">
       <span class="input-label">CVV</span>
-      <input type="number" placeholder="e.g. 233">
+      <input type="number" placeholder="e.g. 233"  ng-model="vm.cvc" required>
     </label>
       </div>
+
       <button class="button button-balanced button-block" type="submit">Sumit</button>
     </form>
   </ion-content>

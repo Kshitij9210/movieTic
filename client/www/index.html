@@ -22,12 +22,14 @@
   <link href="css/ionic.app.css" rel="stylesheet">
 
   <!-- ionic/angularjs js -->
-  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/restangular/1.3.1/restangular.js"></script>
   <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
   <script type="text/javascript">
     Stripe.setPublishableKey('pk_test_hsDZvz0HBvy5vXNaGPWDdvW8');
   </script>
   <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+  <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.4/lodash.min.js"></script> -->
+  <!-- <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/restangular/1.3.1/restangular.js"></script> -->
 
   <!-- cordova script (this will be a 404 during development) -->
   <script src="cordova.js"></script>
@@ -51,6 +53,7 @@
 
   <!-- services -->
   <script src="modules/products/products.factory.js"></script>
+  <script src="modules/users/profile.factory.js"></script>
   <script src="modules/authentication/authentication.factory.js"></script>
   <script src="modules/transactions/payment.factory.js"></script>
 </head>

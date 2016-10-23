@@ -83,7 +83,7 @@
         views: {
           'cart': {
             templateUrl: 'modules/transactions/views/checkout.html',
-            controller: 'CartCtrl as vm'
+            controller: 'CheckoutCtrl as vm'
           }
         }
       })

@@ -1,31 +1,31 @@
 <ion-view hide-nav-bar="true">
   <ion-content padding="true" id="signup">
-    <form class="padding signup-form">
+    <form class="padding signup-form" ng-submit="vm.register()">
       <div class="list">
         <label class="item item-input item-floating-label signup-input">
       <span class="input-label">Username</span>
-      <input type="text" placeholder="username" required>
+      <input type="text" placeholder="username" required ng-model="vm.uname">
     </label>
         <label class="item item-input item-floating-label signup-input">
       <span class="input-label">Password</span>
-      <input type="password" placeholder="password" required>
+      <input type="password" placeholder="password" required ng-model="vm.pass">
     </label>
         <label class="item item-input item-floating-label signup-input">
       <span class="input-label">Email</span>
-      <input type="email" placeholder="Email">
+      <input type="email" placeholder="Email" ng-model="vm.email">
     </label>
         <label class="item item-input item-floating-label signup-input">
     <span class="input-label">Address</span>
-    <input type="text" placeholder="address">
+    <input type="text" placeholder="address" ng-model="vm.address">
   </label>
         <label class="item item-input item-floating-label signup-input">
   <span class="input-label">Phone No.</span>
-    <input type="number" placeholder="phone no.">
+    <input type="number" placeholder="phone no." ng-model="vm.phone">
   </label>
       </div>
       <div class="row">
         <span class="col col-30"></span>
-        <button class="col col-40 button button-outline button-positive signup-btn" ng-click="vm.showAlert()">
+        <button class="col col-40 button button-outline button-positive signup-btn" type="submit">
             create account
           </button>
         <span class="col col-30"></span>

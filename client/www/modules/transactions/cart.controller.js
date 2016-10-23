@@ -16,11 +16,7 @@
   function CartCtrl(Product) {
     var vm = this;
 
-    vm.products = Product.all();
-    console.log(vm.products);
-    vm.remove = function(product) {
-      Product.remove(product);
-    };
+
   }
 
 }());

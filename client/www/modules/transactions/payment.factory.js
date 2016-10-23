@@ -13,22 +13,37 @@
     .factory('Payment', Payment)
 
 
-  function Payment() {
+  function Payment($http) {
 
     return {
-      processPay: processPay;
+      processCard: processCard,
+      purchase: purchase
     };
 
+    function processCard(cnum, cvc, expM, expY, processResponseHandler) {
 
-    var vm = this;
+      Stripe.card.createToken({
+        number: cnum,
+        cvc: cvc,
+        exp_month: expM,
+        exp_year: expY
+      }, processResponseHandler);
+    };
 
-    vm.form = document.querySelector('#payment-form');
+    function purchase(token) {
+      return $http.post('http://localhost:8000/api/users/', {
 
-    function processPay() {
+        "id": 1,
+        "tokn": token,
+        "name": "user",
+        "password": "pass",
+        "address": "nope321",
+        "email": "e@mail.com",
+        "phone": 90078601
 
-      Stripe.card.createToken(vm.form, stripeResponseHandler);
+      })
+    };
 
-    }
   };
 
 }());

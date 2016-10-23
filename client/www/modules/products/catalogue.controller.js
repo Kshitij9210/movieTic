@@ -16,7 +16,11 @@
   function CatalogueCtrl(Product) {
     var vm = this;
 
-    vm.products = Product.all();
+    //get products
+    Product.all().then(function(res) {
+      vm.products = res.data;
+    });
+
   }
 
 }());
