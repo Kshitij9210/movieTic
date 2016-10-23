@@ -1,0 +1,47 @@
+#signup {
+  @extend .background;
+  background-position: center;
+  background-size: cover;
+
+  .signup-form {
+    background-color: rgba(0,0,0,0.5);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12);
+
+    .signup-btn {
+      margin-bottom: 10px;
+    }
+
+    .signup-input {
+      border: none;
+      border-bottom: 1px solid #fff;
+
+      .input-label {
+        color: #d5a611;
+      }
+
+      input {
+        color: #fff;
+
+        &::-webkit-input-placeholder {
+          /* Chrome/Opera/Safari */
+          color: #fff;
+        }
+
+        &::-moz-placeholder {
+          /* Firefox 19+ */
+          color: #fff;
+        }
+
+        &:-ms-input-placeholder {
+          /* IE 10+ */
+          color: #fff;
+        }
+
+        &:-moz-placeholder {
+          /* Firefox 18- */
+          color: #fff;
+        }
+      }
+    }
+  }
+}

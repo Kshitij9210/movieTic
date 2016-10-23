@@ -1,0 +1,17 @@
+{
+  "name": "client",
+  "app_id": "",
+  "proxies": [{
+    "path": "product",
+    "proxyUrl": "http://localhost:8000/product"
+  }],
+  "gulpStartupTasks": [
+    "sass",
+    "watch"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/lib/**/*",
+    "!www/**/*.map"
+  ]
+}

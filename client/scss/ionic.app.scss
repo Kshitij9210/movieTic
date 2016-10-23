@@ -1,0 +1,11 @@
+@import "scss/utilities/_variables.scss";
+@import "scss/utilities/_globals.scss";
+@import "scss/authentication/_login.scss";
+@import "scss/authentication/_signup.scss";
+@import "scss/products/_catalogue.scss";
+@import "scss/transactions/_cart.scss";
+@import "scss/transactions/_checkout.scss";
+@import "scss/transactions/_history.scss";
+@import "scss/users/_profile.scss";
+$ionicons-font-path: "../lib/ionic/fonts" !default;
+@import "www/lib/ionic/scss/ionic";
