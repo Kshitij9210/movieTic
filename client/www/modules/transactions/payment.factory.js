@@ -16,8 +16,13 @@
   function Payment($http) {
 
     return {
+      history: history,
       processCard: processCard,
-      purchase: purchase
+      purchase: purchase,
+    };
+
+    function history() {
+      return $http.get('http://localhost:8000/api/transactions/');
     };
 
     function processCard(cnum, cvc, expM, expY, processResponseHandler) {
@@ -31,16 +36,8 @@
     };
 
     function purchase(token) {
-      return $http.post('http://localhost:8000/api/users/', {
-
-        "id": 1,
-        "tokn": token,
-        "name": "user",
-        "password": "pass",
-        "address": "nope321",
-        "email": "e@mail.com",
-        "phone": 90078601
-
+      return $http.post('http://localhost:8000/api/payment/', {
+        "stripeToken": token,
       })
     };
 

@@ -24,7 +24,8 @@ from transactions.models import Transaction
 from users.models import User
 # importing viewsets
 from products.views import ProductViewSet
-from transactions.views import TransactionViewSet
+# from transactions.views import TransactionViewSet
+from transactions.views import TransactionViewSet, PaymentView
 from users.views import UserViewSet
 
 # registering api views to router
@@ -33,8 +34,8 @@ router = DefaultRouter()
 router.register(prefix='products', viewset=ProductViewSet)
 router.register(prefix='transactions', viewset=TransactionViewSet)
 router.register(prefix='users', viewset=UserViewSet)
-
-# registering models to admin
+# router.register(prefix='payment', viewset=PaymentView)
+# # registering models to admin
 admin.site.register(Product)
 admin.site.register(Transaction)
 admin.site.register(User)
@@ -43,4 +44,11 @@ admin.site.register(User)
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api/', include(router.urls)),
+    # url(r'^api/products/', view=ProductViewSet.as_view({'get': 'list'}),
+    # url(r'^api/transactions/', view=TransactionViewSet.as_view({'get': 'list'})),
+    # url(r'^api/users/', view=UserViewSet.as_view({'get': 'list'})),
+]
+
+urlpatterns += [
+    url(r'^api/payment/', view=PaymentView)
 ]

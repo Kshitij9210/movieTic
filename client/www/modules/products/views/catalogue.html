@@ -2,32 +2,27 @@
   <ion-content class="padding" id="catalogue">
 
     <div class="cat-container">
+      <a href="#/tab/cart">
 
-      <div class="list card prod-card" ng-repeat="product in vm.products">
-        <div class="_pc-header item no-pad">
-          <div class="row no-pad">
-            <span class="col col-50">
+        <div class="list card prod-card" ng-repeat="product in vm.products">
+          <div class="_pc-header item no-pad">
+            <div class="row no-pad">
+              <span class="col col-50">
               <h2 class="_prod-name">{{product.name}}</h2>
             </span>
-            <span class="col col-50">
+              <span class="col col-50">
               <h2 class="_prod-price">{{product.price}}</h2>
             </span>
+            </div>
+          </div>
+          <div class="item item-body">
+            <img class="full-image _p-img" ng-src={{product.imgsrc}}>
+            <p>
+              {{product.desc}}
+            </p>
           </div>
         </div>
-        <div class="item item-body">
-          <img class="full-image _p-img" ng-src={{product.imgsrc}}>
-          <!-- <div class="row">
-
-            <span class="col col-35"></span>
-            <span class="col col-30 ion-cube _prod-img"></span>
-            <span class="col col-35"></span>
-          </div> -->
-          <p>
-            {{product.desc}}
-          </p>
-        </div>
-      </div>
-
+      </a>
     </div>
 
   </ion-content>

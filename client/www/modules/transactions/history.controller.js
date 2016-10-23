@@ -13,8 +13,14 @@
     .controller('HistoryCtrl', HistoryCtrl);
 
 
-  function HistoryCtrl() {
+  function HistoryCtrl(Payment) {
     var vm = this;
+
+    Payment.history().then(function(res) {
+      // console.log(res.data[0]);
+      vm.history = res.data[0];
+    });
+
   }
 
 }());

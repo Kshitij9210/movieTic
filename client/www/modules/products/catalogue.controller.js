@@ -18,6 +18,7 @@
 
     //get products
     Product.all().then(function(res) {
+      console.log(res.data);
       vm.products = res.data;
     });
 

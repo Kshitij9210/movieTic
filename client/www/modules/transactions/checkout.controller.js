@@ -36,6 +36,12 @@
         vm.token = response.id;
         Payment.purchase(vm.token).then(function(res) {
           console.log(res);
+        });
+        $ionicPopup.alert({
+          title: 'Hallelujah',
+          template: 'Item Purchased!'
+        }).then(function() {
+          $state.go('tab.catalogue')
         })
         console.log(vm.token);
       }
