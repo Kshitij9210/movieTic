@@ -1,0 +1,40 @@
+<md-dialog class="movie-dialog" aria-label="Add Movie">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Add Movie</h2>
+      <span flex></span>
+      <md-button class="md-icon-button" ng-click="closeDialog()">
+        <md-icon md-font-library="material-icons" aria-label="Close dialog">close</md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+
+  <md-dialog-content>
+    <div class="md-dialog-content">
+      <div layout="column" layout-padding>
+        <form name="movieForm">
+          <div layout="column">
+            <md-input-container class="md-block">
+              <label>Title</label>
+              <input ng-model="movie.title" type="text" ng-required="true">
+            </md-input-container>
+
+            <md-input-container class="md-block">
+              <label>Description</label>
+              <input ng-model="movie.description" type="text">
+            </md-input-container>
+
+            <md-input-container class="md-block" flex>
+              <label>Amount (USD)</label>
+              <input ng-model="movie.amount" type="number" min="1" ng-required="true">
+            </md-input-container>
+          </div>
+
+          <div layout="column">
+            <md-button class="md-raised md-primary payment-button" ng-disabled="disableSubmit || movieForm.$invalid" ng-click="addMovie()">Create Movie</md-button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </md-dialog-content>
+</md-dialog>

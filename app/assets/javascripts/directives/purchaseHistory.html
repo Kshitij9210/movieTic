@@ -1,0 +1,43 @@
+<md-dialog class="fullscreen-dialog" aria-label="Payment History">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Payment History</h2>
+      <span flex></span>
+      <md-button class="md-icon-button" ng-click="closeDialog()">
+        <md-icon md-font-library="material-icons" aria-label="Close dialog">close</md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+
+  <md-dialog-content>
+    <div class="md-dialog-content">
+      <div layout="column" layout-padding>
+        <md-autocomplete
+                md-selected-item="selectedItem"
+                md-search-text="searchText"
+                md-items="item in querySearch(searchText)"
+                md-item-text="item.name"
+                md-selected-item-change="selectedUserChange(item)"
+                md-min-length="0"
+                placeholder="Select User"
+                md-autofocus>
+          <md-item-template>
+            <span md-highlight-text="searchText" md-highlight-flags="^i">{{ item.name }} [{{ item.email }}]</span>
+          </md-item-template>
+          <md-not-found>
+            No users matching "{{searchText}}" were found.
+          </md-not-found>
+        </md-autocomplete>
+
+        <md-list flex>
+          <md-subheader class="md-no-sticky">Purchases</md-subheader>
+          <md-list-item class="md-1-line" ng-repeat="p in purchases | userFilter:filterUserId" ng-click="null">
+            <div class="md-list-item-text" layout="column">
+              <p>{{ p.user.name }} purchased tickets for movie: {{ p.movie.title }} by paying amount: ${{ p.movie.amount }} on {{ parseDate(p.date) }}</p>
+            </div>
+          </md-list-item>
+        </md-list>
+      </div>
+    </div>
+  </md-dialog-content>
+</md-dialog>
